@@ -1,0 +1,93 @@
+{
+  "project": {
+    "name": "Rocket Pizza Lunar",
+    "description": "Pizzería espacial con entregas a domos y bases lunares en 15 minutos luz.",
+    "version": "1.0.0",
+    "updated_at": "2026-10-07T21:13:00-03:00"
+  },
+  "operating_system": "Gentle-AI Protocol (Senior Product Engineer)",
+  "personas": [
+    {
+      "name": "Kevin",
+      "profile": "Minero espacial fatigado en domo minero",
+      "context": "Opera en tablet industrial con guantes gruesos y conexión satelital lenta",
+      "pain_points": ["Botones diminutos imposibles de presionar con guantes", "Formularios interminables", "Cargas lentas de red"],
+      "ux_solutions": ["Áreas táctiles de 48px a 60px", "Formulario ágil de 1 paso", "Persistencia local en cliente sin latencia"]
+    },
+    {
+      "name": "Xylar",
+      "profile": "Marciano fotosintético de colonias de investigación",
+      "context": "Visión altamente fotosensible a la luz blanca intensa",
+      "pain_points": ["Pantallas brillantes que encandilan", "Bajo contraste que fatiga la vista"],
+      "ux_solutions": ["Modo Espacio Profundo por defecto", "Contraste estricto WCAG AA (4.5:1)", "Sin colores fluorescentes nocivos"]
+    }
+  ],
+  "labeling_glosario": {
+    "Lanzar Pedido": "CTA principal para enviar la orden (reemplaza Execute_Order)",
+    "Hangar de Pizzas": "Catálogo visual de 6 pizzas espaciales (reemplaza Catalog_Grid)",
+    "Historial de Vuelo": "Historial de pedidos en localStorage (reemplaza Order_History_Logs)",
+    "Créditos Lunares (CL)": "Moneda oficial de intercambio y cálculo reactivo",
+    "Teletransporte / Domo": "Destino de entrega seleccionado",
+    "Bio-compatibilidad": "Ficha y modal de aptitud para consumo por especie"
+  },
+  "architecture_spa": {
+    "file_structure": "Single Page Application en un solo index.html",
+    "sections": [
+      "Navbar fija (logo de cohete + toggle Espacio Profundo / Nebulosa Solar)",
+      "Hero espacial (propuesta de valor + CTA 'Lanzar Pedido')",
+      "Hangar de Pizzas (6 tarjetas interactivas estructuradas con Gestalt y badges de especie)",
+      "Formulario de Teletransporte (selector de domo y bio-ingredientes)",
+      "Modal accesible de Bio-compatibilidad (confirmación de vuelo y resumen)"
+    ]
+  },
+  "design_system": {
+    "colors": {
+      "primary_propulsion": "#9333ea",
+      "primary_propulsion_light": "#c084fc",
+      "laser_cyan": "#06b6d4",
+      "amber_credits": "#fbbf24",
+      "success_bio": "#10b981",
+      "danger_radiation": "#ef4444",
+      "dark_space_bg": "#020617",
+      "light_solar_bg": "#f8fafc"
+    },
+    "wcag_ratio": "4.5:1 estricto en ambos modos",
+    "layout": "Mobile-First (1 columna táctil para guantes en tablet/móvil, 3 columnas en desktop)",
+    "interaction_states": ["Default", "Hover", "Active", "Focus (:focus-visible)", "Disabled"]
+  },
+  "technical_boundaries": {
+    "stack": "HTML5 semántico + Tailwind CSS v3 (CDN) + JavaScript Vanilla limpio",
+    "prohibitions": [
+      "PROHIBIDO backend (Node, Express, Python, PHP)",
+      "PROHIBIDO bases de datos complejas (SQL, MySQL, Firebase, Supabase)",
+      "PROHIBIDO frameworks SPA pesados (React, Angular, Vue, Svelte)",
+      "PROHIBIDO estilos inline arbitrarios style='...'"
+    ],
+    "storage": {
+      "orders_key": "rocket_pizza_orders",
+      "cart_key": "rocket_pizza_cart",
+      "reactive_total": "Créditos Lunares (CL)"
+    }
+  },
+  "definition_of_done": {
+    "rubric": "100 puntos",
+    "criteria": [
+      "Fidelidad total al wireframe/prototipo de Figma",
+      "Prueba de la mano atada por teclado (operable al 100% con Tab/Enter/Escape)",
+      "Contraste verificado WCAG AA (4.5:1)",
+      "Prevención de gotchas: overflow-x: hidden contra desbordes móviles",
+      "Clase de seguridad .force-text-white en botones morados",
+      "Uso exclusivo de etiquetas semánticas <button> para controles interactivos"
+    ]
+  },
+  "active_skills": [
+    "tailwind-ui",
+    "tailwind-patterns",
+    "a11y-wcag",
+    "ui-a11y",
+    "web-design-guidelines",
+    "uxui-principles",
+    "vanilla-dom-reactive",
+    "sdd-workflow"
+  ]
+}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rocket Pizza — Wireframe Interactivo Figma & Software Vivo</title>
+
+  <!-- Tailwind CSS v3 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            propulsion: {
+              DEFAULT: '#9333ea',
+              light: '#c084fc',
+              dark: '#7e22ce'
+            },
+            laser: '#06b6d4',
+            credits: '#fbbf24',
+            space: '#020617',
+            nebula: '#f8fafc'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Hojas de estilo semánticas -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100 text-slate-900 dark:bg-[#020617] dark:text-slate-100 antialiased min-h-screen flex flex-col items-center justify-start p-3 sm:p-6 transition-colors duration-300">
+
+  <!-- =========================================================================
+       BARRA DE CONTROL SUPERIOR — NAVEGADOR DEL WIREFRAME DE FIGMA
+       Permite al evaluador saltar a cualquiera de las pantallas del PDF
+       ========================================================================= -->
+  <nav class="w-full max-w-lg mb-4 p-2.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-purple-900/40 shadow-md flex items-center justify-between gap-2 text-xs" aria-label="Navegador de pantallas Figma">
+    <div class="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+      <button 
+        type="button" 
+        id="pill-home" 
+        onclick="navigateTo('home')" 
+        class="px-3 py-1.5 rounded-xl font-bold transition-all focus-visible:outline-none"
+        aria-current="page"
+      >
+        1. Inicio
+      </button>
+      <button 
+        type="button" 
+        id="pill-face-scan" 
+        onclick="navigateTo('face-scan')" 
+        class="px-3 py-1.5 rounded-xl font-medium transition-all focus-visible:outline-none"
+      >
+        2. Facial
+      </button>
+      <button 
+        type="button" 
+        id="pill-catalog" 
+        onclick="navigateTo('catalog')" 
+        class="px-3 py-1.5 rounded-xl font-medium transition-all focus-visible:outline-none"
+      >
+        3. Catálogo
+      </button>
+      <button 
+        type="button" 
+        id="pill-payment" 
+        onclick="navigateTo('payment')" 
+        class="px-3 py-1.5 rounded-xl font-medium transition-all focus-visible:outline-none"
+      >
+        4. Pago
+      </button>
+      <button 
+        type="button" 
+        id="pill-order-summary" 
+        onclick="navigateTo('order-summary')" 
+        class="px-3 py-1.5 rounded-xl font-medium transition-all focus-visible:outline-none"
+      >
+        5. Pedido
+      </button>
+    </div>
+
+    <!-- Toggle de Modo Oscuro / Claro -->
+    <button 
+      type="button" 
+      onclick="toggleTheme()" 
+      class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 shrink-0 font-bold focus-visible:outline-none"
+      title="Alternar entre Espacio Profundo y Nebulosa Solar"
+      aria-label="Cambiar tema de color"
+    >
+      <span id="theme-icon">🌑</span>
+    </button>
+  </nav>
+
+  <!-- =========================================================================
+       MARCO PRINCIPAL DEL DISPOSITIVO MÓVIL (MOBILE-FIRST FRAME SEGÚN FIGMA)
+       ========================================================================= -->
+  <main class="w-full max-w-md bg-white dark:bg-slate-900 border border-slate-300 dark:border-purple-900/40 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col min-h-[780px] relative transition-colors duration-300">
+
+    <!-- Header Fijo de la App (Común a todas las pantallas de Figma) -->
+    <header class="h-16 px-6 bg-slate-200/90 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-300 dark:border-purple-900/30 flex items-center justify-between shrink-0 z-20">
+      <h1 class="text-lg font-bold text-slate-900 dark:text-white font-heading tracking-tight flex items-center gap-2">
+        <span class="text-xl" aria-hidden="true">🚀</span> Rocket Pizza
+      </h1>
+      <div id="header-right-label" class="flex items-center">
+        <!-- Contenido dinámico según pantalla -->
+      </div>
+    </header>
+
+    <!-- Contenedor de Pantallas del Wireframe -->
+    <div class="flex-1 flex flex-col relative overflow-y-auto">
+
+      <!-- =====================================================================
+           PANTALLA 1 — HOME / HERO (PÁGINA 1 DEL PDF DE FIGMA)
+           ===================================================================== -->
+      <section 
+        id="screen-home" 
+        class="flex-1 flex flex-col justify-between p-6 text-center animate-fadeIn" 
+        aria-label="Pantalla de inicio de Rocket Pizza"
+      >
+        <div class="flex-1 flex flex-col items-center justify-center">
+          
+          <!-- Ilustración de Figma: Astronauta surfeando en una pizza espacial -->
+          <div class="w-full max-w-[280px] h-[280px] rounded-3xl bg-[#00d2ff] p-4 flex items-center justify-center shadow-lg relative overflow-hidden mb-8 group">
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md group-hover:scale-105 transition-transform duration-300" aria-label="Astronauta surfeando en una porción de pizza">
+              <!-- Fondo cósmico -->
+              <circle cx="170" cy="30" r="12" fill="#ffffff" opacity="0.4"/>
+              <circle cx="30" cy="160" r="8" fill="#ffffff" opacity="0.3"/>
+              <!-- Queso derretido / Estela -->
+              <path d="M 50 140 Q 90 170 140 145 Q 160 135 150 120 Q 110 110 50 140 Z" fill="#f59e0b"/>
+              <path d="M 40 130 Q 100 175 160 125 Q 170 115 155 105 Q 90 95 40 130 Z" fill="#fbbf24"/>
+              <!-- Borde de pizza (crosta) -->
+              <path d="M 35 130 C 50 165 140 170 165 120 C 175 100 155 105 140 115 C 100 140 50 140 35 130 Z" fill="#d97706"/>
+              <!-- Rodajas de pepperoni -->
+              <circle cx="75" cy="130" r="9" fill="#dc2626"/>
+              <circle cx="110" cy="120" r="10" fill="#dc2626"/>
+              <circle cx="140" cy="115" r="7.5" fill="#dc2626"/>
+              <circle cx="73" cy="128" r="2.5" fill="#ffffff" opacity="0.6"/>
+              <circle cx="108" cy="118" r="3" fill="#ffffff" opacity="0.6"/>
+              <!-- Tabla de surf espacial -->
+              <path d="M 45 95 C 70 85 130 90 155 102 C 145 108 85 102 45 95 Z" fill="#b45309"/>
+              <!-- Piernas del Astronauta -->
+              <path d="M 80 88 L 75 97 L 90 98 L 92 85 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+              <path d="M 115 88 L 122 98 L 135 97 L 126 84 Z" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+              <!-- Cuerpo y traje espacial -->
+              <ellipse cx="102" cy="74" rx="20" ry="18" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+              <!-- Mochila espacial -->
+              <rect x="74" y="62" width="10" height="24" rx="4" fill="#cbd5e1" stroke="#1e293b" stroke-width="2"/>
+              <!-- Casco y Visera oscura con reflejo púrpura -->
+              <circle cx="102" cy="50" r="18" fill="#ffffff" stroke="#1e293b" stroke-width="2"/>
+              <ellipse cx="104" cy="50" rx="13" ry="10" fill="#0f172a"/>
+              <path d="M 95 45 Q 106 42 113 46 Q 105 52 95 45 Z" fill="#c084fc" opacity="0.8"/>
+              <!-- Brazos en postura de surf -->
+              <path d="M 84 70 Q 70 75 60 70" stroke="#1e293b" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M 120 70 Q 135 72 145 65" stroke="#1e293b" stroke-width="5" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Texto exacto de Figma: 'Consegui la pizza mas sabrosa aqui en ¡Rocket Pizza!' -->
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-heading leading-snug max-w-xs mb-3">
+            Consegui la pizza mas sabrosa aqui en ¡Rocket Pizza!
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs mb-8">
+            Horneadas con masa madre lunar a gravedad reducida. Tiempo récord: 15 a 20 minutos.
+          </p>
+        </div>
+
+        <!-- Botón exacto de Figma: 'Pedir ahora' con los 5 estados -->
+        <div class="w-full pt-4">
+          <button 
+            type="button" 
+            onclick="navigateTo('face-scan')" 
+            class="btn-figma-neutral text-lg font-bold py-4 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition-all shadow-md focus-visible:outline-none"
+            aria-label="Iniciar pedido y avanzar a reconocimiento facial"
+          >
+            Pedir ahora
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           PANTALLA 2 — RECONOCIMIENTO FACIAL (PÁGINA 2 DEL PDF DE FIGMA)
+           ===================================================================== -->
+      <section 
+        id="screen-face-scan" 
+        class="hidden flex-1 flex flex-col justify-between p-6 text-center animate-fadeIn" 
+        aria-label="Pantalla de reconocimiento facial"
+      >
+        <div class="flex-1 flex flex-col items-center justify-center">
+          
+          <!-- Visor Ovalado de Figma para el Rostro -->
+          <div class="relative w-64 h-80 rounded-[50%] bg-slate-200 dark:bg-slate-800 border-2 border-dashed border-slate-400 dark:border-purple-500/50 flex flex-col items-center justify-center p-6 shadow-inner overflow-hidden mb-6" id="scan-oval-target">
+            <!-- Rayo láser de escaneo animado -->
+            <div id="scan-beam" class="scanner-beam"></div>
+
+            <div class="w-24 h-28 rounded-full border border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center text-slate-400 dark:text-slate-600">
+              <span class="text-4xl mb-1" aria-hidden="true">👤</span>
+              <span class="text-[10px] uppercase font-bold tracking-wider">Bio-Sensor</span>
+            </div>
+          </div>
+
+          <!-- Texto exacto de Figma: 'Ubica tu rostro en ell centro' -->
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white font-heading mb-2">
+            Ubica tu rostro en el centro
+          </h2>
+          <p id="scan-status-text" class="text-xs text-slate-500 dark:text-slate-400 max-w-xs">
+            Verificación biométrica de especie para astronautas y colonizadores lunares.
+          </p>
+        </div>
+
+        <!-- Acciones de Escaneo con los 5 estados -->
+        <div class="w-full space-y-3 pt-4">
+          <button 
+            type="button" 
+            id="btn-start-scan" 
+            class="btn-figma-neutral font-bold py-3.5 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition-all focus-visible:outline-none"
+          >
+            Iniciar Bio-Escaneo
+          </button>
+          <button 
+            type="button" 
+            onclick="navigateTo('catalog')" 
+            class="w-full py-2.5 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white underline focus-visible:outline-none rounded-lg"
+          >
+            Omitir verificación y ver menú directo
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           PANTALLA 3 — CATÁLOGO DE PRODUCTOS (PÁGINA 3 DEL PDF DE FIGMA)
+           ===================================================================== -->
+      <section 
+        id="screen-catalog" 
+        class="hidden flex-1 flex flex-col p-5 animate-fadeIn" 
+        aria-label="Catálogo de productos de Rocket Pizza"
+      >
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-lg font-bold text-slate-900 dark:text-white font-heading">
+            Especialidades
+          </h2>
+          <span class="text-xs text-purple-600 dark:text-purple-400 font-bold bg-purple-100 dark:bg-purple-950/60 px-2.5 py-1 rounded-full border border-purple-500/30">
+            6 raciones disponibles
+          </span>
+        </div>
+
+        <!-- Contenedor de Tarjetas Gestalt según Wireframe de Figma -->
+        <div id="catalog-cards-container" class="space-y-4 flex-1">
+          <!-- Renderizado dinámicamente con JS (Imagen, Nombre, Precio, Agregar al pedido) -->
+        </div>
+
+        <!-- Barra Inferior de Continuar al Pago -->
+        <div class="sticky bottom-0 pt-4 pb-2 bg-gradient-to-t from-white via-white dark:from-slate-900 dark:via-slate-900 to-transparent mt-4">
+          <button 
+            type="button" 
+            onclick="navigateTo('payment')" 
+            class="btn-space-primary w-full text-base font-bold py-3.5 force-text-white shadow-xl shadow-purple-600/30 flex items-center justify-between px-6"
+            aria-label="Continuar al método de pago"
+          >
+            <span>Ir a Pagar</span>
+            <span id="header-cart-total" class="font-heading font-extrabold text-amber-300">$0</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           PANTALLA 4 — MÉTODO DE PAGO (PÁGINA 4 DEL PDF DE FIGMA)
+           ===================================================================== -->
+      <section 
+        id="screen-payment" 
+        class="hidden flex-1 flex flex-col justify-between p-6 animate-fadeIn" 
+        aria-label="Selección de método de pago"
+      >
+        <div>
+          <!-- Cuadro de Transferencia según Figma -->
+          <div class="w-full max-w-[260px] h-52 mx-auto rounded-3xl bg-slate-200 dark:bg-slate-800 border-2 border-slate-300 dark:border-purple-500/40 flex flex-col items-center justify-center p-6 text-center shadow-md mb-6 relative">
+            <span id="payment-method-icon" class="text-5xl mb-2" aria-hidden="true">🏦</span>
+            <h3 id="payment-method-title" class="text-lg font-bold text-slate-900 dark:text-white font-heading">
+              Transferencia
+            </h3>
+            <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold uppercase mt-1">
+              Canal Oficial Habilitado
+            </span>
+          </div>
+
+          <!-- Datos de Cuenta según Figma: Alias y CBU -->
+          <div class="bg-slate-100 dark:bg-slate-950/80 border border-slate-300 dark:border-purple-900/40 rounded-2xl p-4 text-center max-w-xs mx-auto mb-4">
+            <p id="payment-method-details" class="text-sm font-bold font-mono text-slate-800 dark:text-slate-200 leading-relaxed whitespace-pre-line">
+Alias: RocketPizza.
+CBU: 12345678987654321
+            </p>
+          </div>
+          <p id="payment-method-note" class="text-xs text-center text-slate-500 dark:text-slate-400 max-w-xs mx-auto mb-6">
+            Envía tu comprobante y el cohete despegará de inmediato.
+          </p>
+        </div>
+
+        <!-- Botones de Acción según Figma (Vertical Stack con 5 estados) -->
+        <div class="space-y-3 pt-2">
+          <!-- Botón 1: 'Elegir otro metodo de pago' -->
+          <button 
+            type="button" 
+            onclick="nextPaymentMethod()" 
+            class="btn-figma-neutral font-semibold py-3.5 hover:bg-slate-300 dark:hover:bg-slate-800 transition-all focus-visible:outline-none"
+          >
+            Elegir otro metodo de pago
+          </button>
+
+          <!-- Botón 2: 'Confirmar' -->
+          <button 
+            type="button" 
+            onclick="confirmOrderPayment()" 
+            class="btn-space-primary w-full font-bold py-3.5 force-text-white shadow-lg shadow-purple-600/30"
+          >
+            Confirmar Pedido
+          </button>
+
+          <!-- Botón 3: 'Cancelar' -->
+          <button 
+            type="button" 
+            onclick="navigateTo('catalog')" 
+            class="btn-figma-neutral !bg-transparent text-slate-600 dark:text-slate-400 hover:text-red-500 border-none font-semibold py-2.5"
+          >
+            Cancelar y volver al menú
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           PANTALLA 5 / 6 — TU PEDIDO & CONFIRMACIÓN (PÁGINA 5 Y 6 DEL PDF)
+           ===================================================================== -->
+      <section 
+        id="screen-order-summary" 
+        class="hidden flex-1 flex flex-col justify-between p-6 animate-fadeIn" 
+        aria-label="Resumen de tu pedido confirmado"
+      >
+        <div class="pt-2">
+          <!-- Lista de Items según Figma: 'Pizza especial x2, Bebida x2' -->
+          <div class="bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-purple-900/40 rounded-2xl p-5 mb-8">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-3 font-heading">
+              Detalle de Raciones
+            </h3>
+            <div id="summary-items-list" class="space-y-2 divide-y divide-slate-200 dark:divide-slate-800">
+              <!-- Renderizado dinámico -->
+            </div>
+          </div>
+
+          <!-- Total según Figma: 'Total: $40.000' -->
+          <div class="text-left mb-8 px-2">
+            <span class="text-sm font-semibold text-slate-500 dark:text-slate-400 block">Importe Final:</span>
+            <strong id="summary-total-amount" class="text-3xl font-extrabold text-slate-900 dark:text-white font-heading">
+              Total: $40.000
+            </strong>
+          </div>
+
+          <!-- Demora según Figma: 'Demora 20 minutos' -->
+          <div class="flex items-center gap-3 p-4 rounded-2xl bg-cyan-50 dark:bg-cyan-950/40 border border-cyan-200 dark:border-cyan-500/30 mb-8">
+            <span class="text-2xl" aria-hidden="true">⏱️</span>
+            <div>
+              <strong class="text-sm font-bold text-cyan-900 dark:text-cyan-300 block font-heading">Demora 20 minutos</strong>
+              <span class="text-xs text-cyan-700 dark:text-cyan-400">Cohete con propulsión supersónica en ruta</span>
+            </div>
+          </div>
+
+          <!-- Mensaje de agradecimiento según Figma: 'Gracias por tu compra!' -->
+          <div class="text-center py-2">
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white font-heading tracking-tight mb-1">
+              ¡Gracias por tu compra!
+            </h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Te avisaremos en la esclusa cuando llegue tu pedido.
+            </p>
+          </div>
+        </div>
+
+        <!-- Botón según Figma: 'Volver al inicio' -->
+        <div class="pt-6">
+          <button 
+            type="button" 
+            onclick="resetOrderFlow()" 
+            class="btn-figma-neutral font-bold py-3.5 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 transition-all shadow-md focus-visible:outline-none"
+            aria-label="Reiniciar flujo y volver al inicio"
+          >
+            Volver al inicio
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Pie de página institucional accesible -->
+  <footer class="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>Rocket Pizza Lunar — Prototipo SPA fiel al Wireframe de Figma (WCAG AA Compliant).</p>
+  </footer>
+
+  <!-- Lógica JavaScript en Cliente -->
+  <script src="app.js"></script>
+</body>
+</html>
